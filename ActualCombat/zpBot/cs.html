@@ -1,0 +1,908 @@
+/Library/Frameworks/Python.framework/Versions/3.8/bin/python3.8 /Users/tempuser/PycharmProjects/python爬虫/ActualCombat/zpBot/cscs.py
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+
+
+    <title>2021-2022赛季英超数据统计—球探体育</title>
+        <meta name="Keywords" content="2021-2022赛季英超,英超数据统计" />
+        <meta name="Description" content="赛程赛果：提供世界各地的足球赛事的最即时的赛事赛程赛果、赛制、积分榜、让分盘、大小球盘、射手榜、最常见赛果， 球队详细、入球总数及单双统计、半全场胜负统计 、上下 半场入球数较多、最先入球/失球统计 、入球时间分布表、波胆分布、亚洲盘对照等统计信息-- 球探网." />
+<script type="text/javascript" src="/Script/Lang.js?l=0"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/Style/info_css1.css" rel="stylesheet" type="text/css" />
+<script src="/jsData/leftData/leftData.js" type="text/javascript"></script>
+<script src="/jsData/leftData/leftHtml.js" type="text/javascript"></script>
+
+    <script>
+        var meta = document.getElementsByTagName('meta');
+        for (i in meta) {
+            if (typeof meta[i].name != "undefined" && meta[i].name.toLowerCase() == "description") {
+                if (0 == 0) {
+                    meta[i].content = "球探体育提供2021-2022赛季英超数据统计，包含英超球员所属球队、出场时间、入球转化率、综合评分等专业体育数据！";
+                } else {
+                    meta[i].content = "球探體育提供2021-2022賽季英超數據統計，包含英超球員所屬球隊、出場時間、入球轉化率、綜合評分等專業體育數據！";
+                }
+                break;
+            }
+        }
+    </script>
+    <script type="text/javascript" > var selectSeason = '2021-2022';var lang = 0; var jh = new Object();var teamHelper = new Object();var SclassID = 36;var SubSclassID = 0;</script><script type="text/javascript"  src="/jsData/LeagueSeason/sea36.js"></script><script type="text/javascript"  src="/jsData/Count/2021-2022/playerTech_36.js"></script><script type="text/javascript"  src="/jsData/Count/2021-2022/teamTech_36.js"></script><script type="text/javascript" > var arrLeague = [36,'英格兰超级联赛','英格蘭超級聯賽','English Premier League','2021-2022','#FF3333','league_match/images/20210630141927.png','英超','英超','ENG PR',6,38];
+</script>
+    <script type="text/javascript" src="/Script/tool.js"></script>
+    <style type="text/css">
+        .nav_select ul li.tools {
+            float: right;
+            background-color: #76a95c;
+            border-radius: 2px;
+            padding: 2px;
+            line-height: 20px;
+            margin: 0 8px 0 0;
+        }
+        /*单选框*/
+        .el-radio2 > input[type="radio"] + .el-radio-style2 {
+            display: inline-block;
+            padding: 0 15px;
+            cursor: pointer;
+            color: rgba(255,255,255,.8);
+        }
+
+        .el-radio2 > input[type="radio"] {
+            display: none;
+        }
+
+            .el-radio2 > input[type="radio"]:checked + .el-radio-style2 {
+                color: #333;
+                background-color: #FFF;
+                border-radius: 2px;
+                box-shadow: 0 1px 3px rgba(0,0,0,.1);
+            }
+
+        .sorted {
+            position: relative
+        }
+
+            .sorted .v {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                bottom: 0;
+                display: inline-block;
+                height: 2px;
+                background-color: #FF5106
+            }
+
+        th.sortBy {
+            cursor: pointer;
+        }
+
+        .double {
+            background-color: #EFF4FA;
+        }
+    </style>
+    <script type="text/javascript">
+        var leftDataObj = null;
+        //资料库windows.onload函数
+        function infoBaseInit() {
+            try {
+                //右手边
+                if (arrLeague[6] == "")
+                    arrLeague[6] = "/images/nopic.gif";
+                else
+                    arrLeague[6] = "/Image/" + arrLeague[6];
+                loadLang(lang);
+
+                LoadTitleLeft();
+                titleRightSeason();
+
+            } catch (e) {
+                document.getElementById("mainData").innerHTML = '<div class="NoData hasBorder">数据统计文件缺失，请联系我们！</div>';
+            }
+            //頁面更新時間
+            document.getElementById("spnLoading").style.display = "none";
+            document.getElementById("i_main").style.display = "block";
+        }
+    </script>
+
+</head>
+<body>
+    <script language="javascript" type="text/javascript" src="http://users.win007.com/users/bfnewheader.aspx"></script>
+    <link href="/Style/css1.css" type="text/css" rel="stylesheet" />
+    <script src="/Script/Top.js" type="text/javascript"></script>
+    <div id="info">
+        <!--左边 begin-->
+        <div id="left" style="height:auto">
+            <div id="new_date_me"></div>
+            <div class="search_2">
+                <div class="search_title"></div>
+                <label for="Radio2" class="el-radio" >
+                <input type="radio" name="radiobutton" id="Radio2" value="2" checked="checked">
+                <span class="el-radio-style">球队</span>
+                </label>
+                <label for="Radio1" class="el-radio" >
+                <input type="radio" name="radiobutton" id="Radio1" value="1"  >
+                <span class="el-radio-style">球员</span>
+                </label>
+<input name="textfield" type="text" size="21" id="Text1" placeholder="请输入搜索内容" style="padding-left:5px;width:140px;line-height:26px" />
+                <div class="btn" onclick="searchTeamOrPlayer()">搜 索</div>
+            </div>
+        </div>
+        <!--end 左边-->
+
+        <script type="text/javascript">
+            leftDataObj = new LeftData(SclassID, "TechList", "TechList");
+        </script>
+
+        <!--中间 begin-->        
+        <div id="i_main" style="display:none;">
+            <!-- 中间内容 -->
+            <div class="info_title" id="InfoTitle">
+                <div class="info_title_left" id="TitleLeft"></div>
+                <div class="info_title_right" id="TitleRight">
+                    <select name="seasonList" id="seasonList" onchange="changeSeason()"></select>
+                </div>
+            </div>
+
+
+
+    <div class="sub_menu league">
+        <a href="/cn/League/2021-2022/36.html"><i></i>赛程资料统计</a>
+            <a href="/cn/TechList/2021-2022/36.html"><i></i>数据统计</a>
+         <a href="/cn/bestTeam/2021-2022/36.html"><i></i>最佳阵容</a>  
+         <a href="/cn/TeamHeadPage/2021-2022/36.html"><i></i>球队资料</a>
+         <a href="/cn/FirGetLose/2021-2022/36.html"><i></i>先入球/失球</a>
+         <a href="/cn/NoGetLose/2021-2022/36.html"><i></i>没入球/失球</a>
+         <a class="off" href="/cn/Contrast/2021-2022/36.html"><i></i>标准亚洲盘对照</a>
+    </div>
+
+<script type="text/javascript" src="/Script/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    (function () {
+        var obj = $(".sub_menu a:contains(数据统计)");
+        if (obj.prev())
+            obj.prev().addClass("off");
+        obj.removeClass("off").addClass("on");
+    })();
+</script>
+
+
+            <div class="content toolBar" style="padding:8px 5px">
+                <div style="float: left; margin: 1px 3px 0 5px">
+                    <select name="select" id="selectDataType">
+                    <option value="0">球员进攻</option>
+                    <option value="1">球员传球</option>
+                    <option value="2">球员防守</option>
+                    <option value="3">球队数据</option>
+                    </select>
+                </div>
+                <div style="float: left;">
+                    <select name="select" id="selectTeam1">
+                    <option value="">选择球队</option>
+                    </select>
+                    <select name="select" id="selectPlayer1">
+                    <option value="">选择球员</option>
+                    </select>
+                    <select name="select" id="selectTeam_t1" style="display:none">
+                    <option value="">选择球队</option>
+                    </select>
+                    <span style="padding:0 10px;">VS</span>
+                    <select name="select" id="selectTeam2">
+                    <option value="">选择球队</option>
+                    </select>
+                    <select name="select" id="selectPlayer2">
+                    <option value="">选择球员</option>
+                    </select> 
+                    <select name="select" id="selectTeam_t2" style="display:none">
+                    <option value="">选择球队</option>
+                    </select>
+                    <input name="input" value="比较" type="button" id="compareBtn" style=" vertical-align: 0" />
+                </div>
+            </div>
+            <div class="data" id="mainData">
+                <div>
+                    <div class="nav_select">
+                        <ul class="techlist">
+                        <li id="menu0" class="nav_selected" onclick="SelectHomeOrGuest(0)" style="cursor:pointer">总排行</li>
+                        <li id="menu1" class="nav_unselected" onclick='SelectHomeOrGuest(1)' style="cursor:pointer">主场排行</li>
+                        <li id='menu2' class='nav_unselected' onclick='SelectHomeOrGuest(2)' style="cursor:pointer">客场排行</li>
+                        <li class="tools">
+                        <label for="r-All" class="el-radio2"><input type="radio" name="AllOrAvg" id="r-All"  checked="checked" ><span class="el-radio-style2">总数据</span></label>
+                        <label for="r-avg" class="el-radio2"><input type="radio" name="AllOrAvg" id="r-avg"  value="true"><span class="el-radio-style2">场均数据</span></label>
+
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class='nav_select_bottom'></div>
+                <div id='tableId' class='data'></div>
+                <div class='main_title' style="display:none;" id="showDetTitle"></div>
+                <div id='showDet' style="display:none;" class='data'></div>
+                <div style="padding-top: 10px; width: 638px;" id="lastUpdateTime"></div>
+            </div>
+            <br style="clear: both" />
+        </div>
+        <!--end 中间-->
+
+        <div id="spnLoading" style="margin: 0 auto; padding:5px;width: 638px; float: left;">
+            <br /><br /><br /><br /><br />
+            <div style="border: 2px solid #CCCCCC; padding: 15px 10px 15px 10px; width: 200px;
+				background-color: #FFF; margin: 0 auto;" align="center" id="subSpnLoading">
+                资料库数据加载中，请稍候......
+            </div>
+        </div>
+        
+
+        <script type="text/javascript">
+        function LoadTitleLeft() {
+            var titleLeftHtml = "<div class='img'><img src='" + arrLeague[6] + "' width='52' align='middle' /></div>"; //图片
+            titleLeftHtml += arrLeague[4] + " " + arrLeague[lang + 1] + " 数据统计&nbsp;&nbsp;"; //标题
+
+            document.getElementById("TitleLeft").innerHTML = titleLeftHtml;
+        }
+        //右边标题赛季选择
+        function titleRightSeason() {
+            var seasonSel = document.getElementById("seasonList");
+            for (var i = 0; i < arrSeason.length; i++) {
+                seasonSel.options.add(new Option(arrSeason[i], arrSeason[i]));
+                if (arrSeason[i] == selectSeason) {
+                    seasonSel.selectedIndex = i;
+                }
+            }
+        }
+        function changeSeason() {
+            var season = document.getElementById("seasonList");
+            var seasonVal = season.options[season.selectedIndex].value;
+            window.location.href = "/cn/TechList/" + seasonVal + "/" + arrLeague[0] + ".html";
+        }
+
+        var selectControl = { "dataType": 0, "homeOrGuest": 0, "allOrAvg": false, "sortByName": "Goals", "ifCompare": false }
+        function SelectHomeOrGuest(point) {
+            //去除颜色
+            for (var i = 0; i < 3; i++) {
+                var menu = document.getElementById("menu" + i);
+                if (point == i) {
+                    if (menu.className)
+                        menu.className = "nav_selected";
+                    else
+                        menu.setAttribute("class", "nav_selected");
+                } else {
+                    if (menu.className)
+                        menu.className = "nav_unselected";
+                    else
+                        menu.setAttribute("class", "nav_unselected");
+                }
+            }
+            selectControl["homeOrGuest"] = point;
+            ShowData();
+        }
+        function TechLogic() {
+            this.pageIndex = 1;
+            this.pageLength = 25;
+            this.maxShowLength = 0;
+            function ShowPage(pageIndex, pageCount) {
+                var pageHtml = '<a href="javascript:void(0)" onclick="techLogic.showPageCountList(1)">首页</a>'
+                    + (pageIndex > 1 ? '<a href="javascript:void(0)" onclick="techLogic.showPageCountList(' + (pageIndex - 1) + ')">上一页</a>' : '<span>上一页</span>')
+                    + '<span> &nbsp;&nbsp;<input type="text" style="width: 15px;height: 15px;" value="' + pageIndex + '"/>/' + pageCount + ' &nbsp;&nbsp;</span>'
+                     + (pageIndex < pageCount ? '<a href="javascript:void(0)" onclick="techLogic.showPageCountList(' + (pageIndex + 1) + ')">下一页</a>' : '<span>下一页</span>')
+                    + '<a href="javascript:void(0)" onclick="techLogic.showPageCountList(' + pageCount + ')">尾页</a>';
+                $(".pager").html(pageHtml);
+            }
+            this.showPageCountList = function (pageIndex) {
+                pageIndex = pageIndex+"".replace(/(^\s+)|(\s+$)/g, "");
+                if (pageIndex!=""&&!isNaN(pageIndex)) {
+                    pageIndex = parseInt(pageIndex);
+                    this.pageIndex = pageIndex;
+                    var trArr = $("div#tableId td").parent();
+                    var showCount = 0;
+                    for (var i = 0; i < trArr.length; i++) {
+                        var onetr = trArr[i];
+                        showCount++;
+                        if (showCount > (this.pageIndex - 1) * this.pageLength && showCount <= this.pageIndex * this.pageLength)
+                            onetr.style.display = "";
+                        else onetr.style.display = "none";
+                    }
+                    ShowPage(pageIndex, parseInt(this.maxShowLength / this.pageLength) + 1);
+                }
+            }
+        }
+        var techLogic = new TechLogic();
+        function ShowData() {
+            var sortByName = selectControl["sortByName"];
+            var sortByKey = function (array, key, sortKind) {
+                if (sortKind < 0) {
+                    array = array.sort(function (a, b) {
+                        var x = a[key]; var y = b[key];
+                        if (typeof (x) == "undefined" || typeof (x) == "undefined")
+                            return 0;
+                        if (x == 0)
+                            return 1;
+                        if (y == 0)
+                            return -1;
+                        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                    });
+                }
+                else {
+                    array = array.sort(function (a, b) {
+                        var x = a[key]; var y = b[key];
+                        if (typeof (x) == "undefined" || typeof (x) == "undefined")
+                            return 0;
+                        else return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+                    });
+                }
+                return array;
+            }
+            var TemplateEngine = function (html, options) {
+                var re = /<#([^#]+)?#>/g, reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g, code = 'var r=[];\n', cursor = 0;
+                var add = function (line, js) {
+                    js ? (code += line.match(reExp) ? line + '\n' : 'r.push(' + line + ');\n') :
+                        (code += line != '' ? 'r.push("' + line.replace(/"/g, '\\"') + '");\n' : '');
+                    return add;
+                }
+                while (match = re.exec(html)) {
+                    add(html.slice(cursor, match.index))(match[1], true);
+                    cursor = match.index + match[0].length;
+                }
+                add(html.substr(cursor, html.length - cursor));
+                code += 'return r.join("");';
+                return new Function(code.replace(/[\r\t\n]/g, '')).apply(options);
+            }
+            if (selectControl["dataType"] == 3) {//球队数据
+                var CalculateAvg=function(teams) {
+                    var _i = teams["key"];
+                    var mathHelp = new MathHelp();
+                    for (var index in teams["value"]) {
+                        var _t = teams["value"][index];
+                        var scheSum = _t[_i["SchSum"]];
+                        if (scheSum <= 0)
+                            continue;
+                        _t[_i["goal"]] = mathHelp.Divide(_t[_i["goal"]], scheSum, 2);
+                        _t[_i["fumble"]] = mathHelp.Divide(_t[_i["fumble"]], scheSum, 2);
+                        _t[_i["shots"]] = mathHelp.Divide(_t[_i["shots"]], scheSum, 2);
+                        _t[_i["target"]] = mathHelp.Divide(_t[_i["target"]], scheSum, 2);
+                        _t[_i["shotsed"]] = mathHelp.Divide(_t[_i["shotsed"]], scheSum, 2);
+                        _t[_i["passBallSuc"]] = mathHelp.Divide(_t[_i["passBallSuc"]], scheSum, 2);
+                        _t[_i["dribbles"]] = mathHelp.Divide(_t[_i["dribbles"]], scheSum, 2);
+                        _t[_i["headerSuc"]] = mathHelp.Divide(_t[_i["headerSuc"]], scheSum, 2);
+                        _t[_i["offside"]] = mathHelp.Divide(_t[_i["offside"]], scheSum, 2);
+                        _t[_i["Corner"]] = mathHelp.Divide(_t[_i["Corner"]], scheSum, 2);
+                        _t[_i["tackle"]] = mathHelp.Divide(_t[_i["tackle"]], scheSum, 2);
+                        _t[_i["fouls"]] = mathHelp.Divide(_t[_i["fouls"]], scheSum, 2);
+                        _t[_i["red"]] = mathHelp.Divide(_t[_i["red"]], scheSum, 2);
+                        _t[_i["yellow"]] = mathHelp.Divide(_t[_i["yellow"]], scheSum, 2);
+                    }
+                }
+                var teams;
+                switch (selectControl["homeOrGuest"]) {
+                    case 0: if (selectControl["allOrAvg"]) {
+                        if (!techCout_Team["TotalHalf"]) {
+                            techCout_Team["TotalHalf"] = jQuery.extend(true, {}, techCout_Team["Total"]);
+                            CalculateAvg(techCout_Team["TotalHalf"]);
+                        }
+                        teams = techCout_Team["TotalHalf"];
+                    } else teams = techCout_Team["Total"]; break;
+                    case 1: if (selectControl["allOrAvg"]) {
+                        if (!techCout_Team["HomeHalf"]) {
+                            techCout_Team["HomeHalf"] = jQuery.extend(true, {}, techCout_Team["Home"]);
+                            CalculateAvg(techCout_Team["HomeHalf"]);
+                        }
+                        teams = techCout_Team["HomeHalf"];
+                    } else teams = techCout_Team["Home"]; break;
+                    case 2: if (selectControl["allOrAvg"]) {
+                        if (!techCout_Team["guestHalf"]) {
+                            techCout_Team["guestHalf"] = jQuery.extend(true, {}, techCout_Team["guest"]);
+                            CalculateAvg(techCout_Team["guestHalf"]);
+                        }
+                        teams = techCout_Team["guestHalf"];
+                    } else teams = techCout_Team["guest"]; break;
+                }
+                if (!selectControl["ifCompare"]) {
+                    teams["value"] = sortByKey(teams["value"], teams["key"][sortByName]);
+                    $("div#tableId").html(TemplateEngine($("script[name=teamData]").html(), teams));
+                    $("th.sortBy[sort=" + sortByName + "]").removeClass("sortBy").addClass("sorted");
+                }
+                else {
+                    var teamID1 = $("#selectTeam_t1").val();
+                    var teamID2 = $("#selectTeam_t2").val();
+                    var _i = teams["key"];
+                    var newTeams = new Object();
+                    newTeams["key"] = _i;
+                    var length = 0;
+                    for (var index in teams["value"]) {
+                        var _p = teams["value"][index];
+                        var teamID = _p[_i["TeamID"]];
+                        if (teamID == teamID1) {
+                            newTeams["Home"] = _p;
+                        }
+                        if (teamID == teamID2) {
+                            newTeams["Guest"] = _p;
+                        }
+                        if (length == 0)
+                            length = _p.length;
+                    }
+                    if (!newTeams["Home"])
+                        newTeams["Home"] = new Array(length);
+
+                    if (!newTeams["Guest"])
+                        newTeams["Guest"] = new Array(length);
+                    $("div#tableId").html(TemplateEngine($("script[name=CompareTeam]").html(), newTeams));
+                }
+            }
+            else {
+                function CalculateAvg(players) {
+                    var _i = players["key"];
+                    var mathHelp = new MathHelp();
+                    for (var index in players["value"]) {
+                        var _p = players["value"][index];
+                        var scheSum = _p[_i["SchSum"]];
+                        if (scheSum <= 0)
+                            continue;
+                        _p[_i["PlayingTime"]] = mathHelp.Divide(_p[_i["PlayingTime"]], scheSum, 2);
+                        _p[_i["Goals"]] = mathHelp.Divide(_p[_i["Goals"]], scheSum, 2);
+                        _p[_i["penaltyGoals"]] = mathHelp.Divide(_p[_i["penaltyGoals"]], scheSum, 2);
+                        _p[_i["notPenaltyGoals"]] = mathHelp.Divide(_p[_i["notPenaltyGoals"]], scheSum, 2);
+                        _p[_i["shots"]] = mathHelp.Divide(_p[_i["shots"]], scheSum, 2);
+                        _p[_i["shotsTarget"]] = mathHelp.Divide(_p[_i["shotsTarget"]], scheSum, 2);
+                        _p[_i["wasFouled"]] = mathHelp.Divide(_p[_i["wasFouled"]], scheSum, 2);
+                        _p[_i["offside"]] = mathHelp.Divide(_p[_i["offside"]], scheSum, 2);
+                        _p[_i["bestSum"]] = mathHelp.Divide(_p[_i["bestSum"]], scheSum, 2);
+                        _p[_i["pass"]] = mathHelp.Divide(_p[_i["pass"]], scheSum, 2);
+                        _p[_i["passSuc"]] = mathHelp.Divide(_p[_i["passSuc"]], scheSum, 2);
+                        _p[_i["keyPass"]] = mathHelp.Divide(_p[_i["keyPass"]], scheSum, 2);
+                        _p[_i["assist"]] = mathHelp.Divide(_p[_i["assist"]], scheSum, 2);
+                        _p[_i["longBalls"]] = mathHelp.Divide(_p[_i["longBalls"]], scheSum, 2);
+                        _p[_i["throughBall"]] = mathHelp.Divide(_p[_i["throughBall"]], scheSum, 2);
+                        _p[_i["dribblesSuc"]] = mathHelp.Divide(_p[_i["dribblesSuc"]], scheSum, 2);
+                        _p[_i["tackle"]] = mathHelp.Divide(_p[_i["tackle"]], scheSum, 2);
+                        _p[_i["interception"]] = mathHelp.Divide(_p[_i["interception"]], scheSum, 2);
+                        _p[_i["clearance"]] = mathHelp.Divide(_p[_i["clearance"]], scheSum, 2);
+                        _p[_i["dispossessed"]] = mathHelp.Divide(_p[_i["dispossessed"]], scheSum, 2);
+                        _p[_i["shotsBlocked"]] = mathHelp.Divide(_p[_i["shotsBlocked"]], scheSum, 2);
+                        _p[_i["aerialSuc"]] = mathHelp.Divide(_p[_i["aerialSuc"]], scheSum, 2);
+                        _p[_i["foul"]] = mathHelp.Divide(_p[_i["foul"]], scheSum, 2);
+                        _p[_i["red"]] = mathHelp.Divide(_p[_i["red"]], scheSum, 2);
+                        _p[_i["yellow"]] = mathHelp.Divide(_p[_i["yellow"]], scheSum, 2);
+                        _p[_i["rating"]] = mathHelp.Divide(_p[_i["rating"]], _p[_i["effRating"]], 2);
+                    }
+                }
+                var players;
+                switch (selectControl["homeOrGuest"]) {
+                    case 0: if (selectControl["allOrAvg"]) {
+                        if (!techCout_Player["TotalHalf"]) {
+                            techCout_Player["TotalHalf"] = jQuery.extend(true, {}, techCout_Player["Total"]);
+                            CalculateAvg(techCout_Player["TotalHalf"]);
+                        }
+                        players = techCout_Player["TotalHalf"];
+                    } else players = techCout_Player["Total"]; break;
+                    case 1: if (selectControl["allOrAvg"]) {
+                        if (!techCout_Player["HomeHalf"]) {
+                            techCout_Player["HomeHalf"] = jQuery.extend(true, {}, techCout_Player["Home"]);
+                            CalculateAvg(techCout_Player["HomeHalf"]);
+                        }
+                        players = techCout_Player["HomeHalf"];
+                    } else players = techCout_Player["Home"]; break;
+                    case 2: if (selectControl["allOrAvg"]) {
+                        if (!techCout_Player["guestHalf"]) {
+                            techCout_Player["guestHalf"] = jQuery.extend(true, {}, techCout_Player["guest"]);
+                            CalculateAvg(techCout_Player["guestHalf"]);
+                        }
+                        players = techCout_Player["guestHalf"];
+                    } else players = techCout_Player["guest"]; break;
+                }
+                if (!selectControl["ifCompare"]) {
+                    switch (sortByName) {
+                        case "goalMinute":
+                        case "assistMinute": players["value"] = sortByKey(players["value"], players["key"][sortByName], -1); break;
+                        default: players["value"] = sortByKey(players["value"], players["key"][sortByName]); break;
+                    }
+                    $("div#tableId").html(TemplateEngine($("script[name=player" + selectControl["dataType"] + "]").html(), players));
+                    $("th.sortBy[sort=" + sortByName + "]").removeClass("sortBy").addClass("sorted");
+                    techLogic.maxShowLength = players["value"].length;
+                    techLogic.showPageCountList(1);
+                }
+                else {
+                    var playerID1 = $("#selectPlayer1").val();
+                    var playerID2 = $("#selectPlayer2").val();
+                    var _i = players["key"];
+                    var newPlayers = new Object();
+                    newPlayers["key"] = _i;
+                    var length = 0;
+                    for (var index in players["value"]) {
+                        var _p = players["value"][index];
+                        var playerID = _p[_i["PlayerID"]];
+                        if (playerID == playerID1) {
+                            newPlayers["Home"] = _p;
+                        }
+                        if (playerID == playerID2) {
+                            newPlayers["Guest"] = _p;
+                        }
+                        if (length == 0)
+                            length = _p.length;
+                    }
+                    if (!newPlayers["Home"])
+                        newPlayers["Home"] = new Array(length);
+
+                    if (!newPlayers["Guest"])
+                        newPlayers["Guest"] = new Array(length);
+                    $("div#tableId").html(TemplateEngine($("script[name=ComparePlayer]").html(), newPlayers));
+                }
+            }
+        }
+        $(document).ready(function () {
+            ShowData();
+            $("th.sortBy").live("click", function () {
+                selectControl["sortByName"] = $(this).attr("sort");
+                ShowData();
+            });
+            $("input[name=AllOrAvg][type=radio]").bind("click", function () {
+                if (selectControl["allOrAvg"] != ($(this).val() == "true")) {
+                    selectControl["allOrAvg"] = $(this).val() == "true";
+                    ShowData();
+                }
+            });
+            $(".pager input[type=text]").live("blur", function () {
+                techLogic.showPageCountList($(this).val());
+            });
+            $('.pager input[type=text]').live('keypress', function (event) {
+                if (event.keyCode == "13") {
+                    techLogic.showPageCountList($(this).val());
+                }
+            });
+            $("#selectDataType").bind("change", function () {
+                switch ($(this).val()) {
+                    case "0": selectControl["sortByName"] = "Goals"; break;
+                    case "1": selectControl["sortByName"] = "pass"; break;
+                    case "2": selectControl["sortByName"] = "tackle"; break;
+                    case "3": selectControl["sortByName"] = "goal"; break;
+                }
+                selectControl["dataType"] = $(this).val();
+                if (selectControl["dataType"] == "3") {
+                    $("#selectTeam1,#selectTeam2,#selectPlayer1,#selectPlayer2").hide();
+                    $("#selectTeam_t1,#selectTeam_t2").show();
+                } else {
+                    $("#selectTeam_t1,#selectTeam_t2").hide();
+                    $("#selectTeam1,#selectTeam2,#selectPlayer1,#selectPlayer2").show();
+                }
+                selectControl["ifCompare"] = false;
+                ShowData();
+            });
+            (function () {
+                var arrayObj = new Array();
+                for (var o in techCout_Player["Tid"]) {
+                    var option = "<option value='" + o + "'>" + techCout_Player["Tid"][o][lang] + "</option>";
+                    arrayObj.push(option);
+                }
+                $("#selectTeam1,#selectTeam2").append(arrayObj.join(""));
+                $("#selectTeam1,#selectTeam2").bind("change", function () {
+                    var teamID = $(this).val();
+                    var arrayObj = new Array();
+                    arrayObj.push('<option value="">选择球员</option>');
+                    for (var o in techCout_Player["Pid"]) {
+                        var onePlayer = techCout_Player["Pid"][o];
+                        if (teamID == onePlayer[1]) {
+                            var option = "<option value='" + o + "'>" + onePlayer[0][lang] + "</option>";
+                            arrayObj.push(option);
+                        }
+                    }
+                    if ($(this).attr("id") == "selectTeam1") {
+                        $("#selectPlayer1").empty();
+                        $("#selectPlayer1").append(arrayObj.join(""));
+                    }
+                    else {
+                        $("#selectPlayer2").empty();
+                        $("#selectPlayer2").append(arrayObj.join(""));
+                    }
+                });
+                $("#compareBtn").bind("click", function () {
+                    selectControl["ifCompare"] = true;
+                    ShowData();
+                });
+                arrayObj = new Array();
+                for (var o in techCout_Team["Tid"]) {
+                    var option = "<option value='" + o + "'>" + techCout_Team["Tid"][o][lang] + "</option>";
+                    arrayObj.push(option);
+                }
+                $("#selectTeam_t1,#selectTeam_t2").append(arrayObj.join(""));
+            })();
+        });
+        </script>
+        
+        <script type="text/html" name="player0">
+            <table width="100%" border="1" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF" class="tdlink" id="div_Table2" style="font-size:small">
+                <tbody>
+                    <tr align="center"><th width="30">排名</th><th height="18">球员</th>
+                    <th>所属球队</th><th width="65" class="sortBy" sort="SchSum">出场(替补)<i class="v"></i></th>
+                    <th width="60" class="sortBy" sort="PlayingTime">出场时间<i class="v"></i></th>
+                    <th width="60" class="sortBy" sort="Goals">进球(点)<i class="v"></i></th>
+                    <th class="sortBy" sort="goalMinute">分钟/球<i class="v"></i></th>
+                    <th class="sortBy" sort="shots">射门<i class="v"></i></th><th class="sortBy" sort="shotsTarget">射正<i class="v"></i></th>
+                    <th class="sortBy" sort="goalPercent">入球转化率<i class="v"></i></th>
+                    <th class="sortBy" sort="wasFouled">被侵犯<i class="v"></i></th>
+                    <th class="sortBy" sort="offside">越位<i class="v"></i></th>
+                    <th class="sortBy" sort="bestSum">最佳<i class="v"></i></th>
+                    <th width="42" class="sortBy" sort="rating">评分<i class="v"></i></th></tr>
+             <# if(this) {
+            var mathHelp = new MathHelp();
+            var _i=this["key"];
+            var _pName=techCout_Player["Pid"];
+            var _tName= techCout_Player["Tid"];
+            for(var index in this["value"]){
+                var _p=this["value"][index];
+                var playerID=""+_p[_i["PlayerID"]]+"";
+                var playerInfo=_pName[playerID]?_pName[playerID]:null;
+                var teamInfo=playerInfo?_tName[playerInfo[1]+""]:null;
+              #>
+            <tr align="center" height="18">
+              <td><# 1+parseInt(index) #></td>
+              <td align="center"><# playerInfo?'<a href="/cn/team/player.aspx?playerid='+playerID+'&amp;TeamID='+playerInfo[1]+'" target="_blank">'+playerInfo[0][lang]+'</a>':"" #></td>
+              <td><# teamInfo?'<a href="/cn/team/Summary/'+playerInfo[1]+'.html" target="_blank">'+teamInfo[lang]+'</a>':"" #></td>
+              <td><# _p[_i["SchSum"]] #><# _p[_i["BackSum"]]>0?"("+_p[_i["BackSum"]]+")":"" #></td>
+              <td><# _p[_i["PlayingTime"]] #></td>
+              <td><# _p[_i["Goals"]] #><# _p[_i["penaltyGoals"]]>0?"("+_p[_i["penaltyGoals"]]+")":"" #></td>
+              <td><# _p[_i["goalMinute"]] #></td>
+              <td><# _p[_i["shots"]] #></td>
+              <td><# _p[_i["shotsTarget"]] #></td>
+              <td><# _p[_i["goalPercent"]] #>%</td>
+              <td><# _p[_i["wasFouled"]] #></td>
+              <td><# _p[_i["offside"]] #></td>
+              <td><# _p[_i["bestSum"]] #></td>
+              <td><# _p[_i["rating"]] #></td>
+            </tr>
+        <# }
+            }#>
+                </tbody>
+            </table>
+            <div class="pager" style="float: right;"></div>
+        </script>
+
+       <script type="text/html" name="player1">
+        <table width="100%" border="1" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF" class="tdlink" id="Table1" style="font-size:small">
+          <tbody>
+            <tr align="center" ><th width="30">排名</th><th height="18">球员</th><th>所属球队</th>
+              <th width="65" class="sortBy" sort="SchSum">出场(替补)<i class="v"></i></th>
+              <th width="60" class="sortBy" sort="PlayingTime">出场时间<i class="v"></i></th>
+              <th width="60" class="sortBy" sort="pass" >总传球<i class="v"></i></th>
+              <th class="sortBy" sort="passSucPercent">传球成功率<i class="v"></i></th>
+              <th class="sortBy" sort="keyPass">关键传球<i class="v"></i></th>
+              <th class="sortBy" sort="assist">助攻<i class="v"></i></th><th class="sortBy" sort="assistMinute">分钟/助攻<i class="v"></i></th>
+              <th class="sortBy" sort="longBalls">长传<i class="v"></i></th><th class="sortBy" sort="throughBall">直塞<i class="v"></i></th>
+              <th class="sortBy" sort="dribblesSuc">带球摆脱<i class="v"></i></th><th width="42" class="sortBy" sort="rating">评分<i class="v"></i></th></tr>
+        <# if(this) {
+            var mathHelp = new MathHelp();
+            var _i=this["key"];
+            var _pName=techCout_Player["Pid"];
+            var _tName= techCout_Player["Tid"];
+            for(var index in this["value"]){
+                var _p=this["value"][index];
+                var playerID=""+_p[_i["PlayerID"]]+"";
+                var playerInfo=_pName[playerID]?_pName[playerID]:null;
+                var teamInfo=playerInfo?_tName[playerInfo[1]+""]:null;
+              #>
+            <tr align="center" height="18">
+              <td><# 1+parseInt(index) #></td>
+              <td align="center"><# playerInfo?'<a href="/cn/team/player.aspx?playerid='+playerID+'&amp;TeamID='+playerInfo[1]+'" target="_blank">'+playerInfo[0][lang]+'</a>':"" #></td>
+              <td><# teamInfo?'<a href="/cn/team/Summary/'+playerInfo[1]+'.html" target="_blank">'+teamInfo[lang]+'</a>':"" #></td>
+              <td><# _p[_i["SchSum"]] #><# _p[_i["BackSum"]]>0?"("+_p[_i["BackSum"]]+")":"" #></td>
+              <td><# _p[_i["PlayingTime"]] #></td>
+              <td><# _p[_i["pass"]] #></td>
+              <td><# _p[_i["passSucPercent"]] #>%</td>
+              <td><# _p[_i["keyPass"]] #></td>
+              <td><# _p[_i["assist"]] #></td>
+              <td><# _p[_i["assistMinute"]] #></td>
+              <td><# _p[_i["longBalls"]] #></td>
+              <td><# _p[_i["throughBall"]] #></td>
+              <td><# _p[_i["dribblesSuc"]] #></td>
+              <td><# _p[_i["rating"]] #></td>
+            </tr>
+        <# }
+            }#>
+          </tbody>
+        </table>
+         <div class="pager" style="float: right;"></div>
+        </script>
+
+        <script type="text/html" name="player2">
+         <table width="100%" border="1" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF" class="tdlink" id="Table2" style="font-size:small">
+          <tbody>
+            <tr align="center" ><th width="30">排名</th><th height="18">球员</th><th>所属球队</th>
+              <th class="sortBy" sort="SchSum">出场(替补)<i class="v"></i></th>
+              <th width="60" class="sortBy" sort="PlayingTime">出场时间<i class="v"></i></th>
+              <th width="60" class="sortBy" sort="tackle" >铲断<i class="v"></i></th>
+              <th class="sortBy" sort="interception">拦截<i class="v"></i></th>
+              <th class="sortBy" sort="clearance">解围<i class="v"></i></th>
+              <th class="sortBy" sort="dispossessed">偷球<i class="v"></i></th>
+              <th class="sortBy" sort="shotsBlocked">封堵<i class="v"></i></th>
+              <th class="sortBy" sort="aerialSuc">头球<i class="v"></i></th>
+              <th class="sortBy" sort="foul">犯规<i class="v"></i></th><th class="sortBy" sort="red">红/黄牌<i class="v"></i></th>
+              <th width="42" class="sortBy" sort="rating">评分<i class="v"></i></th></tr>
+        <# if(this) {
+            var mathHelp = new MathHelp();
+            var _i=this["key"];
+            var _pName=techCout_Player["Pid"];
+            var _tName= techCout_Player["Tid"];
+            for(var index in this["value"]){
+                var _p=this["value"][index];
+                var playerID=""+_p[_i["PlayerID"]]+"";
+                var playerInfo=_pName[playerID]?_pName[playerID]:null;
+                var teamInfo=playerInfo?_tName[playerInfo[1]+""]:null;
+              #>
+            <tr align="center" height="18">
+              <td><# 1+parseInt(index) #></td>
+              <td align="center"><# playerInfo?'<a href="/cn/team/player.aspx?playerid='+playerID+'&amp;TeamID='+playerInfo[1]+'" target="_blank">'+playerInfo[0][lang]+'</a>':"" #></td>
+              <td><# teamInfo?'<a href="/cn/team/Summary/'+playerInfo[1]+'.html" target="_blank">'+teamInfo[lang]+'</a>':"" #></td>
+              <td><# _p[_i["SchSum"]] #><# _p[_i["BackSum"]]>0?"("+_p[_i["BackSum"]]+")":"" #></td>
+              <td><# _p[_i["PlayingTime"]] #></td>
+              <td><# _p[_i["tackle"]] #></td>
+              <td><# _p[_i["interception"]] #></td>
+              <td><# _p[_i["clearance"]] #></td>
+              <td><# _p[_i["dispossessed"]] #></td>
+              <td><# _p[_i["shotsBlocked"]] #></td>
+              <td><# _p[_i["aerialSuc"]] #></td>
+              <td><# _p[_i["foul"]] #></td>
+              <td><# _p[_i["red"]] #><# _p[_i["yellow"]]>0?"/"+ _p[_i["yellow"]]:"" #></td>
+              <td><# _p[_i["rating"]] #></td>
+            </tr>
+        <# }
+            }#>
+          </tbody>
+        </table>
+         <div class="pager" style="float: right;"></div>
+        </script>
+
+        <script type="text/html" name="ComparePlayer">
+        <table width="100%" border="1" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF" class="tdlink" id="Table3" style="font-size:small">
+          <tbody><# if(this) {
+            var mathHelp = new MathHelp();
+            var _i=this["key"];
+            var _pName=techCout_Player["Pid"];
+            var _tName= techCout_Player["Tid"];
+                var _h=this["Home"];
+                var _hPlayerID=""+_h[_i["PlayerID"]]+"";
+                var _hPlayerInfo=_pName[_hPlayerID];
+                var _hTeamInfo=_hPlayerInfo?_tName[_hPlayerInfo[1]+""]:null;
+                var _g=this["Guest"];
+                var _gPlayerID=""+_g[_i["PlayerID"]]+"";
+                var _gPlayerInfo=_pName[_gPlayerID];
+                var _gTeamInfo=_gPlayerInfo?_tName[_gPlayerInfo[1]+""]:null;
+              #>
+             <tr align="center" bgcolor="#D1E2F5">
+              <th width="40%"><# _hTeamInfo?'(<a href="/cn/team/Summary/'+_hPlayerInfo[1]+'.html" target="_blank">'+_hTeamInfo[lang]+'</a>)':"" #><# _hPlayerInfo?'<a href="/cn/team/player.aspx?playerid='+_hPlayerID+'&amp;TeamID='+_hPlayerInfo[1]+'" target="_blank">'+_hPlayerInfo[0][lang]+'</a>':"" #></th>
+              <th width="10%" height="18">球员对比</th>
+              <th width="40%"><# _gTeamInfo?'(<a href="/cn/team/Summary/'+_gPlayerInfo[1]+'.html" target="_blank">'+_gTeamInfo[lang]+'</a>)':"" #><# _gPlayerInfo?'<a href="/cn/team/player.aspx?playerid='+_gPlayerID+'&amp;TeamID='+_gPlayerInfo[1]+'" target="_blank">'+_gPlayerInfo[0][lang]+'</a>':"" #></th>
+             </tr>
+             <tr align="center" height="18"><td><# _h[_i["SchSum"]] #><# _h[_i["BackSum"]]>0?"("+_h[_i["BackSum"]]+")":"" #></td><td align="center" class="h-blue">出场(替补)</td><td><# _g[_i["SchSum"]] #><# _g[_i["BackSum"]]>0?"("+_g[_i["BackSum"]]+")":"" #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["PlayingTime"]] #></td><td align="center" class="h-blue">出场时间</td><td><# _g[_i["PlayingTime"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["Goals"]] #><# _h[_i["penaltyGoals"]]>0?"("+_h[_i["penaltyGoals"]]+")":"" #></td><td align="center" class="h-blue">进球(点)</td><td><# _g[_i["Goals"]] #><# _g[_i["penaltyGoals"]]>0?"("+_g[_i["penaltyGoals"]]+")":"" #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["goalMinute"]] #></td><td align="center" class="h-blue">分钟/球</td><td><# _g[_i["goalMinute"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["shots"]] #></td><td align="center" class="h-blue">射门</td><td><# _g[_i["shots"]] #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["shotsTarget"]] #></td><td align="center" class="h-blue">射正</td><td><# _g[_i["shotsTarget"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["goalPercent"]] #>%</td><td align="center" class="h-blue">入球转化率</td><td><# _g[_i["goalPercent"]] #>%</td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["wasFouled"]] #></td><td align="center" class="h-blue">被侵犯</td><td><# _g[_i["wasFouled"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["offside"]] #></td><td align="center" class="h-blue">越位</td><td><# _g[_i["offside"]] #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["bestSum"]] #></td><td align="center" class="h-blue">最佳次数</td><td><# _g[_i["bestSum"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["rating"]] #></td><td align="center" class="h-blue">评分</td><td><# _g[_i["rating"]] #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["pass"]] #></td><td align="center" class="h-blue">总传球</td><td><# _g[_i["pass"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["passSucPercent"]] #>%</td><td align="center" class="h-blue">传球成功率</td><td><# _g[_i["passSucPercent"]] #>%</td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["keyPass"]] #></td><td align="center" class="h-blue">关键传球</td><td><# _g[_i["keyPass"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["assist"]] #></td><td align="center" class="h-blue">助攻</td><td><# _g[_i["assist"]] #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["assistMinute"]] #></td><td align="center" class="h-blue">分钟/助攻</td><td><# _g[_i["assistMinute"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["longBalls"]] #></td><td align="center" class="h-blue">长传</td><td><# _g[_i["longBalls"]] #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["throughBall"]] #></td><td align="center" class="h-blue">直塞</td><td><# _g[_i["throughBall"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["dribblesSuc"]] #></td><td align="center" class="h-blue">带球摆脱</td><td><# _g[_i["dribblesSuc"]] #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["tackle"]] #></td><td align="center" class="h-blue">铲断</td><td><# _g[_i["tackle"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["interception"]] #></td><td align="center" class="h-blue">拦截</td><td><# _g[_i["interception"]] #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["clearance"]] #></td><td align="center" class="h-blue">解围</td><td><# _g[_i["clearance"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["dispossessed"]] #></td><td align="center" class="h-blue">偷球</td><td><# _g[_i["dispossessed"]] #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["shotsBlocked"]] #></td><td align="center" class="h-blue">封堵</td><td><# _g[_i["shotsBlocked"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["aerialSuc"]] #></td><td align="center" class="h-blue">头球</td><td><# _g[_i["aerialSuc"]] #></td></tr>
+              <tr align="center" height="18" class="double"><td><# _h[_i["foul"]] #></td><td align="center" class="h-blue">犯规</td><td><# _g[_i["foul"]] #></td></tr>
+              <tr align="center" height="18"><td><# _h[_i["red"]] #><# _h[_i["yellow"]]>0?"/"+ _h[_i["yellow"]]:"" #></td><td align="center" class="h-blue">红/黄牌</td><td><# _g[_i["red"]] #><# _g[_i["yellow"]]>0?"/"+ _g[_i["yellow"]]:"" #></td></tr>
+        <# }
+        #></tbody></table>
+        </script>
+
+        <script type="text/html" name="teamData">
+         <table width="100%" border="1" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF" class="tdlink" id="Table4" style="font-size:small">
+          <tbody>
+            <tr align="center">
+              <th width="50">排名</th>
+              <th width="80" height="18">球队</th>
+              <th class="sortBy" sort="SchSum">场次<i class="v"></i></th>
+              <th class="sortBy" sort="goal">进球<i class="v"></i></th>
+              <th class="sortBy" sort="fumble">失球<i class="v"></i></th>
+              <th class="sortBy" sort="shots">射门<i class="v"></i></th>
+              <th class="sortBy" sort="target">射正<i class="v"></i></th>
+              <th class="sortBy" sort="shotsed">被射门<i class="v"></i></th>
+              <th class="sortBy" sort="passBallSuc">传球成功<i class="v"></i></th>
+              <th class="sortBy" sort="dribbles">过人<i class="v"></i></th>
+              <th class="sortBy" sort="headerSuc">头球成功<i class="v"></i></th>
+              <th class="sortBy" sort="offside">越位<i class="v"></i></th>
+              <th class="sortBy" sort="Corner">角球<i class="v"></i></th>
+              <th class="sortBy" sort="tackle">铲球<i class="v"></i></th>
+              <th class="sortBy" sort="fouls">犯规<i class="v"></i></th>
+              <th class="sortBy" sort="yellow">红/黄牌<i class="v"></i></th>
+              <th class="sortBy" sort="avgControl">控球率<i class="v"></i></th>
+            </tr>
+              
+          <# if(this) {
+            var mathHelp = new MathHelp();
+            var _i=this["key"];
+            var _tName= techCout_Team["Tid"];
+            for(var index in this["value"]){
+                var _t=this["value"][index];
+                var teamID=""+_t[_i["TeamID"]]+"";
+                var teamInfo=_tName[teamID];
+              #>
+            <tr align="center" height="18">
+              <td><# 1+parseInt(index) #></td>
+              <td><# teamInfo?'<a href="/cn/team/Summary/'+teamID+'.html" target="_blank">'+teamInfo[lang]+'</a>':"" #></td>
+              <td><#_t[_i["SchSum"]] #></td>
+              <td><#_t[_i["goal"]] #></td>
+              <td><#_t[_i["fumble"]] #></td>
+              <td><#_t[_i["shots"]] #></td>
+              <td><#_t[_i["target"]] #></td>
+              <td><#_t[_i["shotsed"]] #></td>
+              <td><#_t[_i["passBallSuc"]] #></td>
+              <td><#_t[_i["dribbles"]] #></td>
+              <td><#_t[_i["headerSuc"]] #></td>
+              <td><#_t[_i["offside"]] #></td>
+              <td><#_t[_i["Corner"]] #></td>
+              <td><#_t[_i["tackle"]] #></td>
+              <td><#_t[_i["fouls"]] #></td>
+              <td><# _t[_i["red"]] #><# _t[_i["yellow"]]>0?"/"+ _t[_i["yellow"]]:"" #></td>
+              <td><#_t[_i["avgControl"]] #>%</td>
+            </tr>
+        <# }
+            }#>
+          </tbody>
+        </table>
+        </script>
+
+        <script type="text/html" name="CompareTeam">
+            <table width="100%" border="1" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF" class="tdlink" id="Table5" style="font-size:small">
+                <tbody>
+                    <#if(this){
+                       var mathHelp=new MathHelp();
+                       var _i=this["key"];
+                       var _tName=techCout_Team["Tid"];
+                       var _h=this["Home"];
+                       var _hTeamID="" +_h[_i["TeamID"]]+"";
+                       var _hTeamInfo=_tName[_hTeamID];
+                       var _g=this["Guest"];
+                       var _gTeamID="" +_g[_i["TeamID"]]+"";
+                       var _gTeamInfo=_tName[_gTeamID];
+                       #>
+                        <tr align="center" bgcolor="#D1E2F5">
+                            <th width="40%"><# _hTeamInfo?'<a href="/cn/team/Summary/'+_hTeamInfo[1]+'.html" target="_blank">'+_hTeamInfo[lang]+'</a>':"" #></th>
+                            <th width="10%" height="18">球队对比</th>
+                            <th width="40%"><#_gTeamInfo?'<a href="/cn/team/Summary/'+_gTeamInfo[1]+'.html" target="_blank">'+_gTeamInfo[lang]+'</a>':"" #></th>
+                        </tr>
+                        <tr align="center" height="18"><td><#_h[_i["SchSum"]] #></#_h[_i["SchSum"]]></td><td align="center" class="h-blue">场次</td><td><#_g[_i["SchSum"]] #></#_g[_i["SchSum"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["goal"]] #></#_h[_i["goal"]]></td><td align="center" class="h-blue">进球</td><td><#_g[_i["goal"]] #></#_g[_i["goal"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["fumble"]] #></#_h[_i["fumble"]]></td><td align="center" class="h-blue">失球</td><td><#_g[_i["fumble"]] #></#_g[_i["fumble"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["shots"]] #></#_h[_i["shots"]]></td><td align="center" class="h-blue">射门</td><td><#_g[_i["shots"]] #></#_g[_i["shots"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["target"]] #></#_h[_i["target"]]></td><td align="center" class="h-blue">射正</td><td><#_g[_i["target"]] #></#_g[_i["target"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["shotsed"]] #></#_h[_i["shotsed"]]></td><td align="center" class="h-blue">被射门</td><td><#_g[_i["shotsed"]] #></#_g[_i["shotsed"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["passBallSuc"]] #></#_h[_i["passBallSuc"]]></td><td align="center" class="h-blue">传球成功</td><td><#_g[_i["passBallSuc"]] #></#_g[_i["passBallSuc"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["dribbles"]] #></#_h[_i["dribbles"]]></td><td align="center" class="h-blue">过人</td><td><#_g[_i["dribbles"]] #></#_g[_i["dribbles"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["headerSuc"]] #></#_h[_i["headerSuc"]]></td><td align="center" class="h-blue">头球成功</td><td><#_g[_i["headerSuc"]] #></#_g[_i["headerSuc"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["offside"]] #></#_h[_i["offside"]]></td><td align="center" class="h-blue">越位</td><td><#_g[_i["offside"]] #></#_g[_i["offside"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["Corner"]] #></#_h[_i["Corner"]]></td><td align="center" class="h-blue">角球</td><td><#_g[_i["Corner"]] #></#_g[_i["Corner"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["tackle"]] #></#_h[_i["tackle"]]></td><td align="center" class="h-blue">铲球</td><td><#_g[_i["tackle"]] #></#_g[_i["tackle"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["fouls"]] #></#_h[_i["fouls"]]></td><td align="center" class="h-blue">犯规</td><td><#_g[_i["fouls"]] #></#_g[_i["fouls"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["red"]] #><#_h[_i["yellow"]]>0?"/"+_h[_i["yellow"]]:"" #></#_h[_i["yellow"]]></#_h[_i["red"]]></td><td align="center" class="h-blue">红/黄牌</td><td><#_g[_i["red"]] #><#_g[_i["yellow"]]>0?"/"+_g[_i["yellow"]]:"" #></#_g[_i["yellow"]]></#_g[_i["red"]]></td></tr>
+                        <tr align="center" height="18"><td><#_h[_i["avgControl"]] #>%</#_h[_i["avgControl"]]></td><td align="center" class="h-blue">控球率</td><td><#_g[_i["avgControl"]] #>%</#_g[_i["avgControl"]]></td></tr>
+                        <#}#>
+                </tbody>
+            </table>
+        </script>
+
+    </div>
+    <script language="javascript" src="/Script/Bottom.js?ver=1" type="text/javascript"></script>
+</body>
+</html>
+    
+
+Process finished with exit code 0

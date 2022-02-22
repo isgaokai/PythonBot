@@ -1,0 +1,35 @@
+cursor 指针
+execute 执行
+browser 浏览器
+source 源代码/来源
+element 元素
+selenium 工具
+webdriver 自动化测试/网页内驱动软件
+common 共同的/普通
+console 控制台
+perform 执行
+frame 框架
+switch 转变
+manage 处理
+final 最终
+initial 初始
+locator 定位器
+go to url 跳转页面
+scheduler 调度器
+put in 提出
+DFS 深度优先算法
+BFS 广度优先算法
+empty 空的
+algorithm 算法
+template 模版
+parse 解析
+memory 内存
+disk 磁盘
+instance 实例
+capitalize 首字母大写
+split 分离
+hexadecimal 十六进制的
+octal 八进制的
+enumerate 枚举
+sequence 序列
+

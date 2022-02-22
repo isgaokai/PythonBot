@@ -1,0 +1,14 @@
+# -*- encoding : utf-8 -*-
+# @Author : Fenglchen
+import requests
+headers= {
+    'Referer': 'https://www.bilibili.com/',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36'
+}
+url = 'https://upos-sz-mirrorcos.bilivideo.com/upgcxcode/75/99/301799975/301799975-1-30080.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&uipk=5&nbs=1&deadline=1632797761&gen=playurlv2&os=cosbv&oi=3661938636&trid=61202832e4a9450eba35dbe958b6c30fu&platform=pc&upsig=dc4241ba912a010da212a86a440e1caf&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=639790907&bvc=vod&nettype=0&orderid=0,3&agrr=0&logo=80000000'
+#url = 'https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/22/63/69096322/69096322-1-30080.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&uipk=5&nbs=1&deadline=1632797412&gen=playurlv2&os=kodobv&oi=3661938636&trid=d266dc2f3b414872aaf1c8eb7388e4a6u&platform=pc&upsig=794971760b8bf6d78f1c96339040e34c&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=639790907&bvc=vod&nettype=0&orderid=0,3&agrr=0&logo=80000000'
+#url = 'https://upos-sz-mirrorhw.bilivideo.com/upgcxcode/75/99/301799975/301799975-1-30066.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&uipk=5&nbs=1&deadline=1632756941&gen=playurlv2&os=hwbv&oi=1963793854&trid=0ad60d4eab0b43288a1876a7f06d5624u&platform=pc&upsig=73353f74980db667c1f2ccd3954cce90&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=639790907&bvc=vod&nettype=0&orderid=0,3&agrr=0&logo=80000000'
+#url = 'https://upos-sz-mirrorcos.bilivideo.com/upgcxcode/33/23/159552333/159552333-1-30280.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&uipk=5&nbs=1&deadline=1632756189&gen=playurlv2&os=cosbv&oi=1963793854&trid=030b6929eef740019caba991d6f2ab97u&platform=pc&upsig=996e92f3eb36744ffa1a69af49aef5ae&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=639790907&bvc=vod&nettype=0&orderid=0,3&agrr=0&logo=80000000'
+response = requests.get(url=url,headers=headers)
+with open('3.mp4', mode='wb') as w:
+    w.write(response.content)

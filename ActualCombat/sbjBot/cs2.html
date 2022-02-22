@@ -1,0 +1,43 @@
+﻿<html>
+<head>
+ <meta charset="UTF-8">
+<script>
+function randomNum(len) {
+　　len = len || 32;
+　　var $chars = '0123456789';    
+　　var maxPos = $chars.length;
+　　var str = '';
+　　for (i = 0; i < len; i++) {
+　　　　str += $chars.charAt(Math.floor(Math.random() * maxPos));
+　　}
+　　return str;
+}
+</script>
+<style>
+/*系统提示*/
+.systembd {  min-height:500px;}
+.systempic { width:500px; margin:100px auto;}
+.systempic h1 { font-size:30px; color:#333; text-align:center; margin:15px auto;}
+.systempic p { font-size:18px; color:#666666; text-align:center;margin:15px auto;}
+
+</style>
+</head>
+
+	<div class="systembd">
+		<div class="systempic slsbd">
+			<h1>出错啦！</h1>
+			<p>该操作已触发系统访问防护规则，请于1-3小时后重试。</p>
+			<p>并请排除不良因素，如：</p>
+			<p>一、所用终端已安装第三方查询软件或插件</p>
+			<p>二、共用公网IP地址触发系统访问防护规则</p>
+			<p>事件ID：<span id="eventid"></span></p>
+			<p><a href="/">返回首页</a></p>
+		</div>
+	</div>
+	<script>
+	var str=randomNum(4)+'-'+randomNum(4)+'-'+randomNum(4);
+     document.getElementById("eventid").innerHTML=str;
+	 var img = new Image();
+	 img.src="/"+str+".png";
+	</script>
+</html>
